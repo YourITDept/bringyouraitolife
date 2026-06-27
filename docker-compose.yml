@@ -1,0 +1,123 @@
+# Project Name: abcoctobot88
+# GitHub: https://github.com/YourITDept/bringyouraitolife.git
+#
+#  If you want to use Hostinger to start up your VPS Docker container 
+#  then you can use the following code and get 20% off
+#    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
+#
+#  ** Login into your system with Docker **
+# docker network create octobot-net
+# docker compose --env-file Environment.txt -p abcoctobot88 up
+# docker ps -a
+# docker exec -it abcoctobot88-octobot /bin/bash
+
+services:
+  octobot:
+    image: ${DOCKER_IMAGE:-youritdepartment/octobot:latest}
+    pull_policy: missing
+    container_name: ${COMPOSE_PROJECT_NAME}-${PROJECT_NAME}
+    hostname: ${HOST_NAME}
+    restart: unless-stopped
+    ports:
+      - "22${ID}:22"
+      - "187${ID}:18789" 
+      - "31${ID}:3100" 
+      - "86${ID}:8642"
+      - "91${ID}:9119"
+      - "80${ID}:8080"
+    labels:
+      - traefik.enable=true
+      # Paperclip
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=${TRAEFIK_PORT1}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${TRAEFIK_HOST1}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}.service=${COMPOSE_PROJECT_NAME}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.rule=Host(`${TRAEFIK_HOST1}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.entrypoints=web
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.service=${COMPOSE_PROJECT_NAME}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.middlewares=${COMPOSE_PROJECT_NAME}-redirect
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-redirect.redirectscheme.permanent=true  
+      # Hermes
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}-B.loadbalancer.server.port=${TRAEFIK_PORT2}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B.rule=Host(`${TRAEFIK_HOST2}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B.service=${COMPOSE_PROJECT_NAME}-B
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B.tls.certresolver=letsencrypt
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B-http.rule=Host(`${TRAEFIK_HOST2}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B-http.entrypoints=web
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B-http.service=${COMPOSE_PROJECT_NAME}-B
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-B-http.middlewares=${COMPOSE_PROJECT_NAME}-B-redirect
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-B-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-B-redirect.redirectscheme.permanent=true
+      # Open Claw
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}-C.loadbalancer.server.port=${TRAEFIK_PORT3}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C.rule=Host(`${TRAEFIK_HOST3}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C.service=${COMPOSE_PROJECT_NAME}-C
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C.tls.certresolver=letsencrypt
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C-http.rule=Host(`${TRAEFIK_HOST3}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C-http.entrypoints=web
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C-http.service=${COMPOSE_PROJECT_NAME}-C
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-C-http.middlewares=${COMPOSE_PROJECT_NAME}-C-redirect
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-C-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-C-redirect.redirectscheme.permanent=true
+      # Web Dashboard / Web Page
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}-D.loadbalancer.server.port=${TRAEFIK_PORT4}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D.rule=Host(`${TRAEFIK_HOST4}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D.service=${COMPOSE_PROJECT_NAME}-D
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D.tls.certresolver=letsencrypt
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D-http.rule=Host(`${TRAEFIK_HOST4}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D-http.entrypoints=web
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D-http.service=${COMPOSE_PROJECT_NAME}-D
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-D-http.middlewares=${COMPOSE_PROJECT_NAME}-D-redirect
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-D-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-D-redirect.redirectscheme.permanent=true  
+    environment:
+      COMPOSE_VERSION: 3
+      PROJECT_NAME: ${PROJECT_NAME}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
+      CONTAINER_NAME: ${COMPOSE_PROJECT_NAME}-${PROJECT_NAME}
+      NETWORK_NAME: octobot-net
+      HOST_NAME: ${HOST_NAME}
+      ID: ${ID}
+      PRE: ${PRE}
+      TRAEFIK_HOST1: ${TRAEFIK_HOST1}
+      TRAEFIK_PORT1: ${TRAEFIK_PORT1}
+      TRAEFIK_HOST2: ${TRAEFIK_HOST2}
+      TRAEFIK_PORT2: ${TRAEFIK_PORT2}
+      TRAEFIK_HOST3: ${TRAEFIK_HOST3}
+      TRAEFIK_PORT3: ${TRAEFIK_PORT3}
+      TRAEFIK_HOST4: ${TRAEFIK_HOST4}
+      TRAEFIK_PORT4: ${TRAEFIK_PORT4}
+      BOT_LOGIN: ${BOT_LOGIN}
+      BOT_PASSWORD: ${BOT_PASSWORD}
+      BOT_SSH_KEY: ${BOT_SSH_KEY}
+      BOT_ID: ${ID}
+      BOT_PRE: ${PRE}
+      PAPERCLIP_PORT: "3100"
+      PAPERCLIP_SERVE_UI: "true"
+      PAPERCLIP_DEPLOYMENT_MODE: "authenticated"
+      PAPERCLIP_DEPLOYMENT_EXPOSURE: "private"
+      PAPERCLIP_PUBLIC_URL: http://${TRAEFIK_HOST1}
+      PAPERCLIP_PUBLIC_URL2: "${PAPERCLIP_PUBLIC_URL:-http://localhost:3100}"
+      PAPERCLIP_ALLOWED_HOSTNAMES: ${TRAEFIK_HOST1},127.0.0.1,localhost
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_URL: ${POSTGRES_URL}
+    volumes:
+      - octobot-home:/${BOT_LOGIN}
+    networks:
+      - octobot-net
+
+volumes:
+  octobot-home:
+
+networks:
+  octobot-net:
+    external: true
