@@ -26,4 +26,4 @@ vi ~/.paperclip/instances/default/config.json
 
 pnpm paperclipai run
 
-Date > AUTORUN.md
+date > AUTORUN.md
