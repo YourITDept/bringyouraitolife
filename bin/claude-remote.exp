@@ -1,0 +1,28 @@
+#!/usr/bin/expect -f
+#
+# File: bin/claude-remote.exp
+# Version: 1.0.0
+#
+
+log_user 1
+set timeout -1
+
+if {![file exists "AUTORUN.md"]} {
+    puts {[claude-remote.exp] Claude Code Login setup required then create AUTORUN.md}
+    exit 0
+}
+
+spawn /bin/bash -c "source ~/.bashrc && claude remote-control"
+
+expect {
+    -re "Enable Remote Control" {
+        puts -nonewline $expect_out(buffer)
+        flush stdout
+        after 2000
+        send "y\r"
+        exp_continue
+    }
+    eof {
+        exit 1
+    }
+}
