@@ -2,6 +2,7 @@
 Bring your AI to life
 
 ## Install Paperclip
+```bash
 cd $HOME/Paperclip
 
 git config --get remote.origin.url && git branch --show-current
@@ -24,3 +25,4 @@ vi ~/.paperclip/instances/default/config.json
 pnpm paperclipai run
 
 date > AUTORUN.md
+```
