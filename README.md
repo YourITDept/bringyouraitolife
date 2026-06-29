@@ -14,18 +14,9 @@ pnpm build
 
 pnpm paperclipai onboard --bind lan
 
-pnpm paperclipai allowed-hostname abc88-paperclip.bringyouraito.life
-
-pnpm paperclipai allowed-hostname abc88.bringyouraito.life
-
-pnpm paperclipai allowed-hostname srv1731381.hstgr.cloud
-
-pnpm paperclipai allowed-hostname 100.88.192.112
-
+pnpm paperclipai allowed-hostname abc88-paperclip.bringyouraitolife
 pnpm paperclipai allowed-hostname host.docker.internal
-
 pnpm paperclipai allowed-hostname 127.0.0.1
-
 pnpm paperclipai allowed-hostname localhost
 
 vi ~/.paperclip/instances/default/config.json
