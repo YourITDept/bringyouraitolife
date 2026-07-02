@@ -1,6 +1,12 @@
 # bringyouraitolife
 Bring your AI to life
 
+## Connect to Docker container
+```bash
+docker ps
+docker exec -it <container_id_or_name> /bin/bash
+```
+
 ## Install Paperclip
 ```bash
 cd $HOME/Paperclip
