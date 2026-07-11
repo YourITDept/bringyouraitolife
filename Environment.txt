@@ -1,5 +1,7 @@
 # Project Name: abcoctobot88
-# # GitHub: https://github.com/YourITDept/bringyouraitolife.git
+# Version: v55
+# Date: 2026/07/11
+# GitHub: https://github.com/YourITDept/bringyouraitolife.git
 #
 #  If you want to use Hostinger to start up your VPS Docker container 
 #  then you can use the following code and get 20% off
@@ -19,7 +21,7 @@ SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=youritdepartment/octobot:v54
+DOCKER_IMAGE=youritdepartment/octobot:v55
 PAPERCLIP_SNAPSHOT=SNAPSHOT202607111a
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
