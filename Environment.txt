@@ -20,6 +20,7 @@ BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
 DOCKER_IMAGE=youritdepartment/octobot:v54
+PAPERCLIP_SNAPSHOT=SNAPSHOT202607111a
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot
