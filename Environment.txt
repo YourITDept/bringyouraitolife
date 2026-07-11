@@ -11,6 +11,7 @@
 # docker ps -a
 # docker exec -it abcoctobot88-octobot /bin/bash
 #=======================================================================
+LIVE_UPDATE=true
 ID=88
 PRE=abc
 DOMAIN=bringyouraitolife.com
@@ -18,7 +19,7 @@ SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=youritdepartment/octobot:v53
+DOCKER_IMAGE=youritdepartment/octobot:v54
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot

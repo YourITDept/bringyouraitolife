@@ -12,18 +12,20 @@ if [ -z "${BOT_LOGIN}" ]; then
 fi
 
 if [ "${LIVE_UPDATE}" = true ]; then
-  echo "[entrypoint] live_update is set, running live update commands"
+  echo "[entrypoint] LIVE_UPDATE is set, running live update commands"
 
   if [ -d /bringyouraitolife ]; then
     cd /bringyouraitolife
-    git pull
+    git pull # Update files from the remote repository
   else
+    LIVE_REPO=https://github.com/YourITDept/bringyouraitolife
+    LIVE_REPO_BRANCH=main
     git checkout https://github.com/YourITDept/bringyouraitolife /bringyouraitolife
   fi
 
-  # Run the install script to move around the files
-  if [ -f /bringyouraitolife/docker-scripts/install.sh ]; then
-    /bringyouraitolife/docker-scripts/install.sh
+  # Run the install script to move around the new files
+  if [ -f /bringyouraitolife/installdocker-scripts/install.sh ]; then
+    /bringyouraitolife/installdocker-scripts/install.sh
   fi
   
   export LIVE_UPDATE=false
