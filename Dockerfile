@@ -1,6 +1,6 @@
 # File: Dockerfile
-# Version: v55
-# Date: 2026/07/11
+# Version: v53
+# Date: 2026/06/27
 # GitHub: https://github.com/YourITDept/bringyouraitolife.git
 #
 # If you want to use Hostinger to start up your VPS Docker container 
@@ -8,22 +8,22 @@
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
 #
 # Command line Docker examples for local build:
-#   docker build --no-cache -t octobot-v55-arm64 .
-#   docker build --no-cache -t octobot-v55-amd64 .
+#   docker build --no-cache -t octobot-v53-arm64 .
+#   docker build --no-cache -t octobot-v53-amd64 .
 #
 # Push to the Docker Hub in the cloud. For both AMD and ARM64 architectures, use the following commands:
 #   This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC. 
-# docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v55 -t youritdepartment/octobot:latest --push .
+# docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v53 -t youritdepartment/octobot:latest --push .
 #
 #  or use the below when buildiung on two different machines for the two architectures.
-# docker build -t youritdepartment/octobot:v55-amd64 --push .
-# docker build -t youritdepartment/octobot:v55-arm64 --push .
-# docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v55 youritdepartment/octobot:v55-amd64 youritdepartment/octobot:v55-arm64
+# docker build -t youritdepartment/octobot:v53-amd64 --push .
+# docker build -t youritdepartment/octobot:v53-arm64 --push .
+# docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v53 youritdepartment/octobot:v53-amd64 youritdepartment/octobot:v53-arm64
 
 # Changed back to 24.04 to save space
 FROM ubuntu:24.04
 
-ARG OCTOBOT_VERSION=v55
+ARG OCTOBOT_VERSION=v53
 ENV OCTOBOT_VERSION=${OCTOBOT_VERSION}
 
 ARG BOT_LOGIN=octobot
@@ -37,7 +37,7 @@ ENV OPENCLAW_PORT=${OPENCLAW_PORT}
 
 ARG PAPERCLIP_PORT=3100
 ENV PAPERCLIP_PORT=${PAPERCLIP_PORT}
-ARG PAPERCLIP_SNAPSHOT=SNAPSHOT202607111a
+ARG PAPERCLIP_SNAPSHOT=SNAPSHOT20260627a
 ENV PAPERCLIP_SNAPSHOT=${PAPERCLIP_SNAPSHOT}
 
 ARG HERMES_PORT_API=8642
