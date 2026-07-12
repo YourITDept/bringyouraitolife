@@ -1,0 +1,47 @@
+# Project: octobot
+# File: Environment.txt
+# Version: v53a
+# Container Name: abcoctobot88
+# GitHub: https://github.com/YourITDept/bringyouraitolife.git
+##
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
+#
+#  If you want to use Hostinger to start up your VPS Docker container 
+#  then you can use the following code and get 20% off
+#    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
+#
+#  ** Login into your system with Docker **
+# docker build --no-cache --platform linux/amd64 -t octobot-v53-amd64 .
+# docker network create octobot-net
+# docker compose --env-file Environment89-amd64.txt -p abcoctobot89 up
+# docker ps -a
+# docker exec -it abcoctobot88-octobot /bin/bash
+#=======================================================================
+ID=89
+PRE=abc
+DOMAIN=bringyouraitolife.com
+SUBDOMAIN=${PRE}${ID}
+BOT_SSH_KEY=""
+BOT_PASSWORD=goPassword@${ID}
+POSTGRES_PASSWORD=ChangeToALongPassword
+DOCKER_IMAGE=octobot-v53-amd64
+#---- Do not need to edit below most likely ------------------
+NETWORK_NAME=octobot-net
+PROJECT_NAME=octobot
+BOT_LOGIN=octobot
+HOST_NAME=${PRE}${PROJECT_NAME}${ID}
+HERMES_LOGIN=hermes
+HERMES_PASSWORD=ChangeToALongPassword
+POSTGRES_HOST=sharedpostgres00
+POSTGRES_PORT=5432
+POSTGRES_USER=${PRE}${PROJECT_NAME}${ID}
+POSTGRES_DB=${PRE}${PROJECT_NAME}${ID}-paperclip
+POSTGRES_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+TRAEFIK_HOST1=${SUBDOMAIN}-paperclip.${DOMAIN}
+TRAEFIK_PORT1=3100
+TRAEFIK_HOST2=${SUBDOMAIN}-hermes.${DOMAIN}
+TRAEFIK_PORT2=9119
+TRAEFIK_HOST3=${SUBDOMAIN}-claw.${DOMAIN}
+TRAEFIK_PORT3=18789
+TRAEFIK_HOST4=${SUBDOMAIN}-web.${DOMAIN}
+TRAEFIK_PORT4=8080
