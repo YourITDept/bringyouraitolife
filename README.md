@@ -10,22 +10,6 @@ docker ps
 docker exec -it <container_id_or_name> /bin/bash
 ```
 
-## Setup the Postgres Database Server - sign into the Postgres server and run these commands
-URL: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
-```bash
-psql -U dbadmin -d maindb -c "CREATE USER \"abcoctobot88\" WITH PASSWORD 'ChangeToALongPassword';"
-psql -U dbadmin -d maindb -c "CREATE DATABASE \"abcoctobot88-paperclip\" OWNER \"abcoctobot88\";"
-psql -U dbadmin -d maindb -c "GRANT ALL PRIVILEGES ON DATABASE \"abcoctobot88-paperclip\" TO \"abcoctobot88\";"
-psql -U dbadmin -d maindb -c "SELECT datname FROM pg_database ORDER BY datname;"
-```
-
-```sql
-CREATE USER "abcoctobot88" WITH PASSWORD 'ChangeToALongPassword';
-CREATE DATABASE "abcoctobot88-paperclip" OWNER "abcoctobot88";
-GRANT ALL PRIVILEGES ON DATABASE "abcoctobot88-paperclip" TO "abcoctobot88";
-SELECT datname FROM pg_database ORDER BY datname;
-```
-
 ## Install Paperclip
 ```bash
 cd $HOME/Paperclip
@@ -38,7 +22,7 @@ pnpm install
 
 pnpm build
 
-# Note Postgres URL: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
+# Note Postgres URL from below: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
 
 pnpm paperclipai onboard --bind lan
 
@@ -67,3 +51,19 @@ This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC.
  docker build -t youritdepartment/octobot:v53-arm64 --push .
  docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v53 youritdepartment/octobot:v53-amd64 youritdepartment/octobot:v53-arm64
  ```
+
+## Setup the Postgres Database Server - sign into the Postgres server and run these commands
+URL: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
+```bash
+psql -U dbadmin -d maindb -c "CREATE USER \"abcoctobot88\" WITH PASSWORD 'ChangeToALongPassword';"
+psql -U dbadmin -d maindb -c "CREATE DATABASE \"abcoctobot88-paperclip\" OWNER \"abcoctobot88\";"
+psql -U dbadmin -d maindb -c "GRANT ALL PRIVILEGES ON DATABASE \"abcoctobot88-paperclip\" TO \"abcoctobot88\";"
+psql -U dbadmin -d maindb -c "SELECT datname FROM pg_database ORDER BY datname;"
+```
+
+```sql
+CREATE USER "abcoctobot88" WITH PASSWORD 'ChangeToALongPassword';
+CREATE DATABASE "abcoctobot88-paperclip" OWNER "abcoctobot88";
+GRANT ALL PRIVILEGES ON DATABASE "abcoctobot88-paperclip" TO "abcoctobot88";
+SELECT datname FROM pg_database ORDER BY datname;
+```
