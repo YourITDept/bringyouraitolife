@@ -4,22 +4,25 @@ Bring your AI to life
 ## License
 MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 
-## Build for Docker Hub
-Push to the Docker Hub in the cloud. For both AMD and ARM64 architectures, use the following commands:
-This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC. 
-```bash
- docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v53 -t youritdepartment/octobot:latest --push .
-
- # or use the below when buildiung on two different machines for the two architectures. 
- docker build -t youritdepartment/octobot:v53-amd64 --push .
- docker build -t youritdepartment/octobot:v53-arm64 --push .
- docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v53 youritdepartment/octobot:v53-amd64 youritdepartment/octobot:v53-arm64
- ```
-
 ## Connect to Docker container
 ```bash
 docker ps
 docker exec -it <container_id_or_name> /bin/bash
+```
+
+## Setup the Postgres Database Server - sign into the Postgres server and run these commands
+```bash
+psql -U dbadmin -d maindb -c "CREATE USER \"abcoctobot88\" WITH PASSWORD 'ChangeToALongPassword';"
+psql -U dbadmin -d maindb -c "CREATE DATABASE \"abcoctobot88-paperclip\" OWNER \"abcoctobot88\";"
+psql -U dbadmin -d maindb -c "GRANT ALL PRIVILEGES ON DATABASE \"abcoctobot88-paperclip\" TO \"abcoctobot88\";"
+psql -U dbadmin -d maindb -c "SELECT datname FROM pg_database ORDER BY datname;"
+```
+
+```sql
+CREATE USER "abcoctobot88" WITH PASSWORD 'ChangeToALongPassword';
+CREATE DATABASE "abcoctobot88-paperclip" OWNER "abcoctobot88";
+GRANT ALL PRIVILEGES ON DATABASE "abcoctobot88-paperclip" TO "abcoctobot88";
+SELECT datname FROM pg_database ORDER BY datname;
 ```
 
 ## Install Paperclip
@@ -49,3 +52,15 @@ pnpm paperclipai run
 
 date > AUTORUN.md
 ```
+
+## Build Docker Image for Docker Hub "youritdepartment/octobot"
+Push to the Docker Hub in the cloud. For both AMD and ARM64 architectures, use the following commands:
+This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC. 
+```bash
+ docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v53 -t youritdepartment/octobot:latest --push .
+
+ # or use the below when buildiung on two different machines for the two architectures. 
+ docker build -t youritdepartment/octobot:v53-amd64 --push .
+ docker build -t youritdepartment/octobot:v53-arm64 --push .
+ docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v53 youritdepartment/octobot:v53-amd64 youritdepartment/octobot:v53-arm64
+ ```
