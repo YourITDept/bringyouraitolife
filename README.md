@@ -1,6 +1,20 @@
 # bringyouraitolife
 Bring your AI to life
 
+# License
+MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
+
+## Build
+Push to the Docker Hub in the cloud. For both AMD and ARM64 architectures, use the following commands:
+This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC. 
+ docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v53 -t youritdepartment/octobot:latest --push .
+
+  or use the below when buildiung on two different machines for the two architectures.
+ docker build -t youritdepartment/octobot:v53-amd64 --push .
+ docker build -t youritdepartment/octobot:v53-arm64 --push .
+ docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v53 youritdepartment/octobot:v53-amd64 youritdepartment/octobot:v53-arm64
+
+
 ## Connect to Docker container
 ```bash
 docker ps

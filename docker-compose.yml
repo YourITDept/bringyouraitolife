@@ -1,5 +1,10 @@
-# Project Name: abcoctobot88
+# Project: octobot
+# File: docker-compose.yml
+# Version: v53a
+# Date: 2026/06/27
 # GitHub: https://github.com/YourITDept/bringyouraitolife.git
+#
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 #
 #  If you want to use Hostinger to start up your VPS Docker container 
 #  then you can use the following code and get 20% off

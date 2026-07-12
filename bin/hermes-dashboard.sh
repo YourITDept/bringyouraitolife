@@ -3,6 +3,7 @@
 # File: bin/hermes-dashboard.sh
 # Version: 0.0.1
 #
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 
 if [ ! -f "$HOME/Openclaw/AUTORUN.md" ]; then
   echo "[openclaw-gw.sh] AUTORUN.md file does not exist - create it to auto run the process"

@@ -3,6 +3,7 @@
 # File: bin/obsidian-brain-sync.sh
 # Version: 0.0.1
 #
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 
 set -e
 

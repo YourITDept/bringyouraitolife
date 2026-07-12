@@ -1,10 +1,8 @@
 # Project: octobot
-# File: Environment.txt
+# File: Environment89-arm64.txt
 # Version: v53a
-# Container Name: abcoctobot88
+# Container Name: abcoctobot89
 # GitHub: https://github.com/YourITDept/bringyouraitolife.git
-#
-# Docker Hub Image: youritdepartment/octobot:v53
 #
 # License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 #
@@ -13,26 +11,26 @@
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
 #
 #  ** Login into your system with Docker **
+# docker build --no-cache --platform linux/arm64 -t octobot-v53-arm64 .
 # docker network create octobot-net
-# docker compose --env-file Environment.txt -p abcoctobot88 up
+# docker compose --env-file Environment89-arm64.txt -p abcoctobot89 up
 # docker ps -a
-# docker exec -it abcoctobot88-octobot /bin/bash
+# docker exec -it abcoctobot89-octobot /bin/bash
 #=======================================================================
-ID=88
+ID=89
 PRE=abc
 DOMAIN=bringyouraitolife.com
 SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=youritdepartment/octobot:v53
+DOCKER_IMAGE=octobot-v55-arm64
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot
 BOT_LOGIN=octobot
 HOST_NAME=${PRE}${PROJECT_NAME}${ID}
 HERMES_LOGIN=hermes
-HERMES_PASSWORD=ChangeToALongPassword
 POSTGRES_HOST=sharedpostgres00
 POSTGRES_PORT=5432
 POSTGRES_USER=${PRE}${PROJECT_NAME}${ID}
