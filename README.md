@@ -11,7 +11,7 @@ docker exec -it <container_id_or_name> /bin/bash
 ```
 
 ## Setup the Postgres Database Server - sign into the Postgres server and run these commands
-### URL: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
+URL: postgresql://abcoctobot88:ChangeToALongPassword@sharedpostgres00:5432/abcoctobot88-paperclip
 ```bash
 psql -U dbadmin -d maindb -c "CREATE USER \"abcoctobot88\" WITH PASSWORD 'ChangeToALongPassword';"
 psql -U dbadmin -d maindb -c "CREATE DATABASE \"abcoctobot88-paperclip\" OWNER \"abcoctobot88\";"
