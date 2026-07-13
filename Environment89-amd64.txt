@@ -1,21 +1,20 @@
 # Project: octobot
-# File: Environment.txt
-# Version: v53a
-# Container Name: abcoctobot88
+# File: Environment89-amd64.txt
+#
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND (see LICENSE file)
+#
 # GitHub: https://github.com/YourITDept/bringyouraitolife.git
-##
-# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
 #
 #  If you want to use Hostinger to start up your VPS Docker container 
 #  then you can use the following code and get 20% off
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
-#
+
 #  ** Login into your system with Docker **
-# docker build --no-cache --platform linux/amd64 -t octobot-v53-amd64 .
+# docker build --no-cache --platform linux/amd64 -t octobot-v60-amd64 .
 # docker network create octobot-net
 # docker compose --env-file Environment89-amd64.txt -p abcoctobot89 up
 # docker ps -a
-# docker exec -it abcoctobot88-octobot /bin/bash
+# docker exec -it abcoctobot89-octobot /bin/bash
 #=======================================================================
 ID=89
 PRE=abc
@@ -24,7 +23,7 @@ SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=octobot-v53-amd64
+DOCKER_IMAGE=octobot-v60-amd64
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot

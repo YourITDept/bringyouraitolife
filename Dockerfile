@@ -1,27 +1,24 @@
 # Project: octobot 
 # File: Dockerfile
-# Version: v53a
-# Date: 2026/06/27
-# GitHub: https://github.com/YourITDept/bringyouraitolife.git
 #
-# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND
+# License: MIT License - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND (see LICENSE file)
+#
+# GitHub: https://github.com/YourITDept/bringyouraitolife.git
 #
 # If you want to use Hostinger to start up your VPS Docker container 
 #  then you can use the following code and get 20% off
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
-#
-# Command line Docker examples for local build:
-#   docker build --no-cache --platform linux/arm64 -t octobot-v53-arm64 .
-#   docker build --no-cache --platform linux/amd64 -t octobot-v53-amd64 .
-#
 
-# Changed back to 24.04 to save space
+# Command line Docker examples for local build:
+#   docker build --no-cache --platform linux/arm64 -t octobot-v60-arm64 .
+#   docker build --no-cache --platform linux/amd64 -t octobot-v60-amd64 .
+
 FROM ubuntu:24.04
 
-ARG OCTOBOT_VERSION=v53
+ARG OCTOBOT_VERSION=v60
 ENV OCTOBOT_VERSION=${OCTOBOT_VERSION}
 
-ARG PAPERCLIP_SNAPSHOT=SNAPSHOT20260712a
+ARG PAPERCLIP_SNAPSHOT=SNAPSHOT20260713a
 ENV PAPERCLIP_SNAPSHOT=${PAPERCLIP_SNAPSHOT}
 
 ARG BOT_LOGIN=octobot
@@ -87,9 +84,11 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
     /home/linuxbrew/.linuxbrew/bin/brew -v && \
     mkdir -p /home/${BOT_LOGIN}/bin && \
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/${BOT_LOGIN}/.bashrc && \
-    echo '[ -f /etc/profile.d/container-env.sh ] && source /etc/profile.d/container-env.sh' >> /home/${BOT_LOGIN}/.bashrc && \
+    echo '[ -f /etc/profile.d/container-env.sh ] && source /etc/profile.d/container-env.sh' >> /home/${BOT_LOGIN}/.bashrc: && \
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/${BOT_LOGIN}/.profile && \
     echo '[ -f /etc/profile.d/container-env.sh ] && source /etc/profile.d/container-env.sh' >> /home/${BOT_LOGIN}/.profile && \
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/${BOT_LOGIN}/setenv.pr && \
+    echo '[ -f /etc/profile.d/container-env.sh ] && source /etc/profile.d/container-env.sh' >> /home/${BOT_LOGIN}/setenv.pr && \
     type brew && \
     brew -v && \
     brew update && \
@@ -100,7 +99,9 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
           node@22 pnpm \
           python pyenv uv pipx \
           ffmpeg ripgrep \
-          screen tmux
+          screen tmux \
+          libpq && \
+    echo 'export PATH=$PATH:$(brew --prefix libpq)/bin' > /home/${BOT_LOGIN}/setenv.pr
 
 #==============================================================================\
 # OpenAI Codex
