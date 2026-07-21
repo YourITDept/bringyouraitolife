@@ -54,14 +54,14 @@ date > AUTORUN.md
 Push to the Docker Hub in the cloud. For both AMD and ARM64 architectures, use the following commands:
 This works on the Apple M1/M2/M3 ARM64 Mac, but not on the AMD64 Intel/AMD PC. 
 ```bash
- docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v60 -t youritdepartment/octobot:latest --push .
+ docker buildx build --platform linux/amd64,linux/arm64 -t youritdepartment/octobot:v61 -t youritdepartment/octobot:latest --push .
  ```
 
  ### or use the below when buildiung on two different machines for the two architectures. 
  ```bash
- docker build --platform linux/amd64 -t youritdepartment/octobot:v60-amd64 --push .
- docker build --platform linux/arm64 -t youritdepartment/octobot:v60-arm64 --push .
- docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v60 youritdepartment/octobot:v60-amd64 youritdepartment/octobot:v60-arm64
+ docker build --platform linux/amd64 -t youritdepartment/octobot:v61-amd64 --push .
+ docker build --platform linux/arm64 -t youritdepartment/octobot:v61-arm64 --push .
+ docker buildx imagetools create -t youritdepartment/octobot:latest -t youritdepartment/octobot:v61 youritdepartment/octobot:v61-amd64 youritdepartment/octobot:v61-arm64
  ```
 
 ## Setup the Postgres Database Server - sign into the Postgres server and run these commands

@@ -10,7 +10,7 @@
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
 #
 #  ** Login into your system with Docker **
-# docker build --no-cache --platform linux/arm64 -t octobot-v60-arm64 .
+# docker build --no-cache --platform linux/arm64 -t octobot-v61-arm64 .
 # docker network create octobot-net
 # docker compose --env-file Environment89-arm64.txt -p abcoctobot89 up
 # docker ps -a
@@ -23,7 +23,7 @@ SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=octobot-v60-arm64
+DOCKER_IMAGE=octobot-v61-arm64
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot

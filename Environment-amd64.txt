@@ -11,7 +11,7 @@
 
 #  ** Login into your system with Docker **
 # docker network create octobot-net
-# docker compose --env-file Environment.txt -p abcoctobot88 up
+# docker compose --env-file Environment-arm64.txt -p abcoctobot88 up
 # docker ps -a
 # docker exec -it abcoctobot88-octobot /bin/bash
 #=======================================================================
@@ -22,7 +22,7 @@ SUBDOMAIN=${PRE}${ID}
 BOT_SSH_KEY=""
 BOT_PASSWORD=goPassword@${ID}
 POSTGRES_PASSWORD=ChangeToALongPassword
-DOCKER_IMAGE=youritdepartment/octobot:v61
+DOCKER_IMAGE=octobot-v61-amd64
 #---- Do not need to edit below most likely ------------------
 NETWORK_NAME=octobot-net
 PROJECT_NAME=octobot

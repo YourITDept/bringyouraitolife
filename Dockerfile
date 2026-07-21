@@ -8,17 +8,18 @@
 # If you want to use Hostinger to start up your VPS Docker container 
 #  then you can use the following code and get 20% off
 #    https://www.hostinger.com?REFERRALCODE=TMLYCWAQCNC0
+#
 
 # Command line Docker examples for local build:
-#   docker build --no-cache --platform linux/arm64 -t octobot-v60-arm64 .
-#   docker build --no-cache --platform linux/amd64 -t octobot-v60-amd64 .
+#   docker build --no-cache --platform linux/arm64 -t octobot-v61-arm64 .
+#   docker build --no-cache --platform linux/amd64 -t octobot-v61-amd64 .
 
 FROM ubuntu:24.04
 
-ARG OCTOBOT_VERSION=v60
+ARG OCTOBOT_VERSION=v61
 ENV OCTOBOT_VERSION=${OCTOBOT_VERSION}
 
-ARG PAPERCLIP_SNAPSHOT=SNAPSHOT20260713a
+ARG PAPERCLIP_SNAPSHOT=v2026.720.0
 ENV PAPERCLIP_SNAPSHOT=${PAPERCLIP_SNAPSHOT}
 
 ARG BOT_LOGIN=octobot
